@@ -14,15 +14,19 @@ const connect = mongoose.connect(url, {
 
 connect.then(() => {            //the connect method returns a promise so now we can use the .then() method
     console.log('Connected correctly to server');
-
-    //instatiate a new doc:
-    const newCampsite = new Campsite({
+    //PART 1
+    //instatiate a new doc: const 
+    //newCampsite = new Campsite
+    //PART 2
+    //we can use .create() which takes an argument an object that defines the new document to create, then automatically saves it. This create method returns a promise.
+    Campsite.create({
         name: "React Lake Campground",
         description: "test"
-    });
-
-    //using the save method on this new document to save to the campsite's collection in the database and return a promise:
-    newCampsite.save()
+    })
+        //PART 1
+        //using the save method on this new document to save to the campsite's collection in the database and return a promise:
+        //newCampsite.save()
+        //PART2 : dont need the save method anymore because Campsite.create() is able to save automatically.
         .then(campsite => {
             console.log(campsite);
             return Campsite.find();
